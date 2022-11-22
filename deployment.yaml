@@ -42,7 +42,7 @@ spec:
 
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   #namespace: go
@@ -56,5 +56,8 @@ spec:
       paths:
         - path: /
           backend:
-            serviceName: go-service
-            servicePort: 80
+            service:
+              name: go-service
+              port:
+                number: 80
+          pathType: Prefix
